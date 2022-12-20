@@ -12,7 +12,7 @@ def index():
     Precip_2020 = getPrecipByYear.get_precip_by_year(2020)
     Precip_2021 = getPrecipByYear.get_precip_by_year(2021)
     Precip_2022 = getPrecipByYear.get_precip_by_year(2022)
-    if sum(Precip_2022) / len(Precip_2022) >= (sum(Precip_2021) / len(Precip_2021) + sum(Precip_2020) / len(Precip_2020) + sum(Precip_2019) / len(Precip_2019)) / 3:
+    if sum(Precip_2022) >= (sum(Precip_2021) + sum(Precip_2020) + sum(Precip_2019)) / 3:
         return f"The project should be delayed. \n", 200
     else:
         return f"The project should not be delayed. \n", 200
