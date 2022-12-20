@@ -15,17 +15,19 @@ mail = Mail(app)
 @app.route("/", methods=["GET"])
 def index():
     """Get the response from Visual Crossing."""
-    Precip_2019 = [5.196, 16.822, 3.301, 0.254, 0.0] # getPrecipByYear.get_precip_by_year(2019)
-    Precip_2020 = [0.0, 0.0, 0.0, 0.0, 0.0] # getPrecipByYear.get_precip_by_year(2020)
-    Precip_2021 = [0.0, 0.0, 0.0, 0.744, 0.857]# getPrecipByYear.get_precip_by_year(2021)
-    Precip_2022 = [0.0, 0.0, 0.0, 0.0, 5.861] # getPrecipByYear.get_precip_by_year(2022)
-    if sum(Precip_2022) >= (sum(Precip_2021) / len(Precip_2021) + sum(Precip_2020) / len(Precip_2020) + sum(Precip_2019) / len(Precip_2019)) / 3:
-        msg = Message('Abnormal Weather Delay', sender='2592784446@qq.com', recipients=['1952066849@qq.com'])
+    precip_2019 = [5.196, 16.822, 3.301, 0.254, 0.0] # getPrecipByYear.get_precip_by_year(2019)
+    precip_2020 = [0.0, 0.0, 0.0, 0.0, 0.0] # getPrecipByYear.get_precip_by_year(2020)
+    precip_2021 = [0.0, 0.0, 0.0, 0.744, 0.857]# getPrecipByYear.get_precip_by_year(2021)
+    precip_2022 = [0.0, 0.0, 0.0, 0.0, 5.861] # getPrecipByYear.get_precip_by_year(2022)
+
+    """Judge if the precipitation will cause a schedule delay. """
+    if sum(precip_2022) >= (sum(precip_2021) + sum(precip_2020) + sum(precip_2019)) / 3:
+        msg = Message('Abnormal Weather Delay', sender='*****@***.com', recipients=['*****@***.com'])
         msg.body = "Due to high precipitation, the project is delayed. "
         mail.send(msg)
         return f"The project should be delayed. \n", 200
     else:
-        msg = Message('No abnormal Weather Delay', sender='2592784446@qq.com', recipients=['1952066849@qq.com'])
+        msg = Message('No abnormal Weather Delay', sender='*****@***.com', recipients=['*****@***.com'])
         msg.body = "No delay schedule due to precipitation. "
         mail.send(msg)
         return f"The project should not be delayed. \n", 200
