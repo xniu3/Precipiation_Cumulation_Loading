@@ -1,9 +1,9 @@
 import json
 import sys
 import ssl
+import urllib
 
 ssl._create_default_https_context = ssl._create_unverified_context
-import urllib
 
 
 def get_precip_by_year(year: int) -> list:
