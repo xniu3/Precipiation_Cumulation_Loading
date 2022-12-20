@@ -21,8 +21,8 @@ def get_compare_precip(date: datetime) -> bool:
     """Judge if the precipitation will cause a schedule delay. """
     last_five_day_precip_today = get_last_five_days_precip(date)
     last_five_day_precip_of_last_year_today = get_last_five_days_precip(date - relativedelta(years=1))
-    last_five_day_precip_of_two_yeaes_ago_today = get_last_five_days_precip(date - relativedelta(years=1))
-    last_five_day_precip_of_three_years_ago_today = get_last_five_days_precip(date - relativedelta(years=1))
+    last_five_day_precip_of_two_yeaes_ago_today = get_last_five_days_precip(date - relativedelta(years=2))
+    last_five_day_precip_of_three_years_ago_today = get_last_five_days_precip(date - relativedelta(years=3))
     
     return sum(last_five_day_precip_today) >= (sum(last_five_day_precip_of_last_year_today) + \
                                     sum(last_five_day_precip_of_two_yeaes_ago_today) + \
