@@ -19,15 +19,17 @@ def get_last_five_days_precip(date: datetime) -> list:
 
 def get_compare_precip(date: datetime) -> bool:
     """Judge if the precipitation will cause a schedule delay. """
-    last_five_day_precip_today = get_last_five_days_precip(date)
-    last_five_day_precip_of_last_year_today = get_last_five_days_precip(date - relativedelta(years=1))
-    last_five_day_precip_of_two_yeaes_ago_today = get_last_five_days_precip(date - relativedelta(years=2))
-    last_five_day_precip_of_three_years_ago_today = get_last_five_days_precip(date - relativedelta(years=3))
+    last_five_day_precip = get_last_five_days_precip(date)
+    last_five_day_precip_of_last_year = get_last_five_days_precip(date - relativedelta(years=1))
+    last_five_day_precip_of_two_yeaes_ago = get_last_five_days_precip(date - relativedelta(years=2))
+    last_five_day_precip_of_three_years_ago = get_last_five_days_precip(date - relativedelta(years=3))
     
-    return sum(last_five_day_precip_today) >= (sum(last_five_day_precip_of_last_year_today) + \
-                                    sum(last_five_day_precip_of_two_yeaes_ago_today) + \
-                                    sum(last_five_day_precip_of_three_years_ago_today)) / 3
+    return sum(last_five_day_precip) >= (sum(last_five_day_precip_of_last_year) + \
+                                    sum(last_five_day_precip_of_two_yeaes_ago) + \
+                                    sum(last_five_day_precip_of_three_years_ago)) / 3
 
+def get_compare_precip_today() -> bool:
+    return get_compare_precip(datetime.now())
 
 # def get_precip_by_year(year: int) -> list:
 #     try:
