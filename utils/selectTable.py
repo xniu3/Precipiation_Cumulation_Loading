@@ -12,5 +12,7 @@ def selectTable():
         print("EMAIL = ", row[3], "\n")
     conn.commit()
     conn.close()
+
+
 if __name__ == '__main__':
     selectTable()

@@ -1,4 +1,6 @@
 import sqlite3
+
+
 def createTable():
     conn = sqlite3.connect('../db.sqlite3')
     c = conn.cursor()
@@ -13,5 +15,7 @@ def createTable():
     c.execute(sql)
     conn.commit()
     conn.close()
+
+
 if __name__ == '__main__':
     createTable()

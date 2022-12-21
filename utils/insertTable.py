@@ -1,4 +1,6 @@
 import sqlite3
+
+
 def insertTable():
     conn = sqlite3.connect('../db.sqlite3')
     c = conn.cursor()
@@ -16,5 +18,7 @@ def insertTable():
           VALUES (4, 'Mckernan Belgravia', 'TC', '1961018099@qq.com' )")
     conn.commit()
     conn.close()
+
+
 if __name__ == '__main__':
     insertTable()
