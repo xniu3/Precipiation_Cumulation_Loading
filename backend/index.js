@@ -14,7 +14,7 @@ MongoClient.connect(
     process.env.WEATHER_DB_URI,
     {
         maxPoolSize: 50,
-        connectTimeoutMS: 2500   
+        connectTimeoutMS: 100 
         
     }
 ).catch(err =>{
