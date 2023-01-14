@@ -4,17 +4,23 @@ import mongodb from "mongodb"
 
 import dotenv from "dotenv"
 
-dotenv.config()
-
-const MongoClient = mongodb.MongoClient;
-
+//dotenv.config()
+//const MongoClient = mongodb.MongoClient;
 const port = process.env.PORT || 8000
 
+app.listen(port, ()=>{
+    console.log(`listening on port ${port}`);
+})
+
+
+
+/*
 MongoClient.connect(
     process.env.WEATHER_DB_URI,
     {
         maxPoolSize: 50,
-        connectTimeoutMS: 100 
+        wtimeoutMS: 2500,
+        useNewUrlParser: true
         
     }
 ).catch(err =>{
@@ -26,3 +32,5 @@ MongoClient.connect(
         console.log(`listening on port ${port}`);
     })
 })
+
+*/
